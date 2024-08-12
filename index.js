@@ -13,11 +13,7 @@ app.get("/healthcheck", (req, res) => {
 
 app.post("/predict", (req, res) => {
     try {
-        console.log(req.body);
         const { knowledge_level, learning_rate, error_rate } = req.body;
-        console.log(
-            `python3 model.py --state ${knowledge_level} ${learning_rate} ${error_rate}`
-        );
         const output = execSync(
             `python3 model.py --state ${knowledge_level} ${learning_rate} ${error_rate}`
         );
